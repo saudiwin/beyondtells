@@ -6,25 +6,27 @@
 #
 
 library(shiny)
+require(shinythemes)
 
-shinyUI(fluidPage(
+shinyUI(fluidPage(theme = shinytheme("sandstone"),
 
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Beyond Tells Interactive Data Visualization"),
 
   # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
+      h2('Initial Database Exploration'),
+      p('This page will host visualization, modeling and database management tools for the Beyondtells data.'),
+      br(),
+      actionButton('load',tags$b('Load Data Again')),
+      width=2
     ),
 
     # Show a plot of the generated distribution
     mainPanel(
-      plotOutput("distPlot")
+      plotlyOutput('histplot'),
+      DT::dataTableOutput('viewdata'))
     )
   )
-))
+)
