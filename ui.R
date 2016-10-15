@@ -7,6 +7,7 @@
 
 library(shiny)
 require(shinythemes)
+require(plotly)
 
 shinyUI(fluidPage(theme = shinytheme("sandstone"),
 
